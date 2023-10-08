@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-primary1: #f7f7f7;
+    --color-primary2: #030000;
+    --color-seconsdary1: #003658;
+    --color-seconsdary2: #03aeeb;
+
+    --font-size-5px: 5px;
+    --font-size-10px: 10px;
+    --font-size-15px: 15px;
+    --font-size-20px: 20px;
+    --font-size-25px: 25px;
+    --font-size-30px: 30px;
+    --font-size-35px: 35px;
+    --font-size-40px: 40px;
+    --font-size-45px: 45px;
+    --font-size-50px: 50px;
+    --font-size-55px: 55px;
+    --font-size-60px: 60px;
+}
+
+html, body { 
+    height: 100%; 
+}
+body { margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background-color: var(--color-white);
+}

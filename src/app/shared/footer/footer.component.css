@@ -1,0 +1,14 @@
+.pie-pagina{
+    height: 7rem;
+    padding: var(--font-size-5px) 0;
+    font-size: var(--font-size-20px);
+    color: var(--color-black);
+    text-align: center;
+    font-weight: bold; 
+    background-color: var(--color-primary1);
+}
+
+.pgn{
+    width: var(--font-size-40px);
+    margin: 0 var(--font-size-15px);
+}
