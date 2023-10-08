@@ -1,5 +1,5 @@
 .wrapper{
-    min-height: calc(100vh - 7.6rem);;
+    min-height: var(--height-body);
     display: flex;
     align-items: center;
 }

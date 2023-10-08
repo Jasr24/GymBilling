@@ -22,6 +22,8 @@
     --font-size-50px: 50px;
     --font-size-55px: 55px;
     --font-size-60px: 60px;
+
+    --height-body: calc(100vh - 5.97rem);
 }
 
 html, body { 
