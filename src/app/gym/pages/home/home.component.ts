@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ export class HomeComponent {
   constructor ( private snack: MatSnackBar,
                 private router: Router,                
                 private fb: FormBuilder,
+                private toastr: ToastrService,
                 private spinner: NgxSpinnerService
               ){}
 
@@ -56,7 +58,11 @@ export class HomeComponent {
       return; 
       
       this.spinner.show();
-      
+      setTimeout(() => {
+        this.toastr.success('Este es un comentario especial', 'Tarea Completada');
+        console.log("😁😘💕😂😊😍🤣😒Por desarrollo")
+        this.spinner.hide();
+      }, 1500); // 3000 milisegundos = 3 segundos
   }
   
   accep(){
