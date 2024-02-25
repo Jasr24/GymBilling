@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Location } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +20,8 @@ export class LoginComponent {
     
   constructor ( private snack: MatSnackBar,
                 private router: Router,                
+                private location: Location,
+                private toastr: ToastrService,
                 private fb: FormBuilder,
                 private spinner: NgxSpinnerService) {}
 
@@ -31,7 +35,15 @@ export class LoginComponent {
       return; 
      
      this.spinner.show();
+     setTimeout(() => {
+      this.toastr.success('Este es un comentario especial', 'Tarea Completada');
+      console.log("😁😘💕😂😊😍🤣😒Por desarrollo")
+      this.spinner.hide();
+    }, 1500); // 3000 milisegundos = 3 segundos
      
   }
   
+  calcel() {
+    this.location.back();
+  }
 }

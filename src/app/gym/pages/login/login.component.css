@@ -47,6 +47,11 @@ mat-form-field {
     font-weight: 500;
 }
 
+.calcel {
+    background-color: var(--color-seconsdary1);
+    border-color: var(--color-seconsdary1);
+}
+
 .forgot{
     margin-top: var(--font-size-15px);
     font-size: var(--font-size-15px);

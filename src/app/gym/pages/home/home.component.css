@@ -1,0 +1,36 @@
+.container {
+    padding: 30px;
+}
+
+.img_gym{
+    width: 200px;
+}
+
+.form-row {
+    display: flex; /* Establece el contenedor como un contenedor flex */
+    justify-content: space-around; /* Distribuye los elementos a lo largo del contenedor */
+}
+
+.accep{
+    width: 100px;
+    height: 55px;
+    border-radius: 20px;
+    color: var(--color-white);
+    background-color: var(--color-seconsdary1);
+    border-color: var(--color-seconsdary1);
+}
+
+.imagen {
+    margin: 20px;
+    width: 500px;
+}
+
+.login {
+    margin-left: 10px;
+    width: 300px;
+    height: 55px;
+    border-radius: 20px;
+    color: var(--color-white);
+    background-color: var(--color-seconsdary2);
+    border-color: var(--color-seconsdary2);
+}
