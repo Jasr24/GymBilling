@@ -1,0 +1,15 @@
+<div class="header">
+    <div class="row">
+        <span class="col-6">
+            <i class="uil uil-history-alt icono" *ngIf="!isHome"></i>
+        </span>
+        <span class="col-6">
+            <i class="uil uil-home icono" *ngIf="!isHome"></i>
+            <i class="uil uil-signout icono" *ngIf="!isLogin" (click)="login()"></i>
+            <i class="uil uil-signin icono" *ngIf="isLogin"></i>
+            <i class="uil uil-bars icono" *ngIf="!isHome"></i>
+        </span>
+    </div>
+    
+    
+</div>

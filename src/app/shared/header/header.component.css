@@ -1,0 +1,17 @@
+.header{
+    height: 5rem;
+    padding: var(--font-size-15px) 0;
+    font-size: var(--font-size-20px);
+    color: var(--color-black);
+    text-align: center;
+    font-weight: bold; 
+    background-color: var(--color-primary1);
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.icono {
+    color: black;
+    font-size: 50px;
+    cursor: pointer;
+}

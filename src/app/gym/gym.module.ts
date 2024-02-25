@@ -10,6 +10,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './pages/home/home.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -30,7 +31,8 @@ import { HomeComponent } from './pages/home/home.component';
     ReactiveFormsModule,
     MatSnackBarModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule
   ]
 })
 export class GymModule { }
