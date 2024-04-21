@@ -44,6 +44,6 @@ export class LoginComponent {
   }
   
   calcel() {
-    this.location.back();
+    this.router.navigate(['/home']);
   }
 }
