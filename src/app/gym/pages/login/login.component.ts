@@ -39,6 +39,7 @@ export class LoginComponent {
       this.toastr.success('Este es un comentario especial', 'Tarea Completada');
       console.log("😁😘💕😂😊😍🤣😒Por desarrollo")
       this.spinner.hide();
+      this.router.navigate(['/admin/home']);
     }, 1500); // 3000 milisegundos = 3 segundos
      
   }

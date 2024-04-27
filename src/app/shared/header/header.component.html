@@ -1,7 +1,7 @@
 <div class="header">
     <div class="row">
         <span class="col-6">
-            <i class="uil uil-history-alt icono" *ngIf="!isHome"></i>
+            <i class="uil uil-history-alt icono" *ngIf="!isHome" (click)="back()"></i>
         </span>
         <span class="col-6">
             <i class="uil uil-home icono" *ngIf="!isHome"></i>

@@ -85,6 +85,10 @@ export class HeaderComponent implements  AfterViewChecked{
     this.menu = false;
   }
 
+  back(){
+    this.router.navigate(['/admin/home']);
+  }
+
   calcel() {
     this.location.back();
   }
