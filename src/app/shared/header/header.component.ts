@@ -30,23 +30,23 @@ export class HeaderComponent implements  AfterViewChecked{
             ){
               this.filasMenu = [
                 {
-                  ruta: "/home-admin",
+                  ruta: "/admin/home",
                   nombreRuta: "Inicio"
                 },
                 {
-                  ruta: "/home-admin/registrar-cliente",
+                  ruta: "/admin/registrar-cliente",
                   nombreRuta: "Registrar cliente"
                 },
                 {
-                  ruta: "/home-admin/registro-pagos",
+                  ruta: "/admin/registro-pagos",
                   nombreRuta: "Registro pagos"
                 },
                 {
-                  ruta: "/home-admin/reportes",
+                  ruta: "/admin/reportes",
                   nombreRuta: "Reportes"
                 },
                 {
-                  ruta: "/home-admin/estado-cuentas",
+                  ruta: "/admin/estado-cuentas",
                   nombreRuta: "Estado cuentas"
                 },
                 {
@@ -77,6 +77,7 @@ export class HeaderComponent implements  AfterViewChecked{
      if (item.nombreRuta === "Cerrar sesión") {
        this.logout();
      }
+     this.viewSidenav.close(); 
   }
   
   logout(){

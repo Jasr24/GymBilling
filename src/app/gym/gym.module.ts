@@ -12,6 +12,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './pages/home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
+import { RegistrarClienteComponent } from './pages/registrar-cliente/registrar-cliente.component';
+import { RegistroPagosComponent } from './pages/registro-pagos/registro-pagos.component';
+import { ReportesComponent } from './pages/reportes/reportes.component';
+import { EstadoCuentasComponent } from './pages/estado-cuentas/estado-cuentas.component';
 
 
 
@@ -19,7 +23,11 @@ import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
   declarations: [
     LoginComponent,
     HomeComponent,
-    HomeAdminComponent
+    HomeAdminComponent,
+    RegistrarClienteComponent,
+    RegistroPagosComponent,
+    ReportesComponent,
+    EstadoCuentasComponent
   ],
   exports: [
     NgxSpinnerModule
