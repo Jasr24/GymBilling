@@ -15,3 +15,42 @@
     font-size: 50px;
     cursor: pointer;
 }
+
+.img_gym{
+    margin-top: var(--font-size-20px);
+    margin-bottom: var(--font-size-10px);
+    height: 100%;
+    background-color: var(--color-primary1);
+    border-radius: var(--font-size-20px);
+}
+
+.sindenavCustom{
+    margin-top: 14px;
+    margin-bottom: 200px;
+    min-height: calc(90vh - 80px) !important;
+    background: transparent;
+}
+
+.sidenav{
+    background: var(--color-seconsdary1);
+}
+
+a{
+    border: 1px solid; 
+    border-top-color: var(--color-seconsdary1);
+    border-right-color: var(--color-seconsdary1); /* Color del borde derecho */
+    border-left-color: var(--color-seconsdary1); /* Color del borde izquierdo */
+    text-align: start;
+}
+
+.active{
+    background-color: var(--color-seconsdary3);
+}
+
+.active span{
+    font-weight: 550;
+}
+
+span{
+    color: var(--color-white);
+}

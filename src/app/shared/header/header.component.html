@@ -6,10 +6,27 @@
         <span class="col-6">
             <i class="uil uil-home icono" *ngIf="!isHome"></i>
             <i class="uil uil-signout icono" *ngIf="!isLogin" (click)="login()"></i>
-            <i class="uil uil-signin icono" *ngIf="isLogin"></i>
-            <i class="uil uil-bars icono" *ngIf="!isHome"></i>
+            <i class="uil uil-signin icono" *ngIf="isLogin" (click)="logout()"></i>
+            <i id="menuIcon" class="uil uil-bars icono" *ngIf="menu" (click)="sidenav.toggle();"></i>
         </span>
     </div>
-    
+    <mat-sidenav-container [ngClass]="{'col-4 sindenavCustom': isLogin, 'col-0': !isLogin}">
+        <mat-sidenav class="col-12 sidenav" #sidenav opened>
+
+            <div class="col 12 container text-center">
+                <img class="img_gym col-8" src="assets/images/GymCamp.png">
+            </div>
+
+            <mat-nav-list>
+                <a *ngFor="let item of filasMenu; let i=index" 
+                        mat-list-item
+                        [routerLink]= item.ruta 
+                        routerLinkActive="active"
+                        (click)="onLogoutClick(item)">
+                    <span> {{filasMenu[i].nombreRuta}}</span>                   
+                </a>
+            </mat-nav-list>
+        </mat-sidenav>
+    </mat-sidenav-container>
     
 </div>

@@ -11,13 +11,15 @@ import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './pages/home/home.component';
 import { SharedModule } from '../shared/shared.module';
+import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
 
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    HomeAdminComponent
   ],
   exports: [
     NgxSpinnerModule
