@@ -1,0 +1,16 @@
+<div class="modal-dialog-container">
+    <div class="modal-dialog-header">
+        <div class="modal-dialog-icon">
+            <img class="icon-image" *ngIf="type == 1" src="../../../../../assets/images/ok.png" alt="">
+            <img class="icon-image" *ngIf="type == 2" src="../../../../../assets/images/error.png" alt="">
+            <img class="icon-image" *ngIf="type == 3" src="../../../../../assets/images/warning.png" alt="">
+        </div>
+    </div>
+    <div class="modal-dialog-body">
+        <span class="modal-dialog-title">{{title}}</span>
+        <span class="modal-dialog-message" style="text-align: center;">{{ message }}</span>
+    </div>
+    <div class="modal-dialog-footer">
+        <div class="modal-dialog-button" (click)="close() ">Aceptar</div>
+    </div>
+</div>

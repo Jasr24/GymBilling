@@ -1,0 +1,27 @@
+<mat-form-field appearance="outline">
+    <mat-label> {{titulo}} </mat-label>
+    <mat-select [placeholder]="titulo" #matSelect [formControl]="_valueSelected" [multiple]="isMultiple">
+        <mat-select-trigger *ngIf="displayed.length>0">
+            {{mostrarDisplayed()}}
+        </mat-select-trigger>
+        <mat-option *ngIf="showSearch">
+            <ngx-mat-select-search [formControl]="search" [placeholderLabel]="'Buscar...'" [noEntriesFoundLabel]="'No se encontró.'" [clearSearchInput]='true'>
+                <mat-icon ngxMatSelectSearchClear>highlight_off</mat-icon>
+            </ngx-mat-select-search>
+        </mat-option>
+        <ng-container *ngIf="!allObject">
+            <mat-option *ngFor="let dat of filteredCtrl | async" [value]="dat[key]">
+                <div [innerHTML]="name(dat)"></div>
+            </mat-option>
+        </ng-container>
+        <ng-container *ngIf="allObject">
+            <mat-option *ngFor="let dat of filteredCtrl | async" [value]="dat">
+                <div [innerHTML]="name(dat)"></div>
+            </mat-option>
+        </ng-container>
+        <!-- <mat-option *ngIf="empty">CREAR</mat-option> -->
+    </mat-select>
+    <mat-error *ngIf="hasError(_valueSelected)">
+        {{ printError(_valueSelected,mapError) }}
+    </mat-error>
+</mat-form-field>

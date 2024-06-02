@@ -1,0 +1,42 @@
+.table-1 {
+    background-color: rgba(247, 247, 247, 0.623);
+}
+
+.number {
+    justify-content: flex-end;
+    padding-left: 10px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-evenly;
+    cursor: pointer;
+}
+
+th {
+    font-size: 14px;
+}
+
+.table-transparente {
+    border-collapse: separate !important;
+    border-spacing: 2px !important;
+    background-color: transparent;
+}
+
+
+.center-buttons-options{
+    padding-right: 0 !important;
+    text-align: center;
+}
+
+.sombra{
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.header{
+    background-color: #003658;
+}
+
+.mat-header-cell, th{
+    color: rgb(255, 255, 255);
+}

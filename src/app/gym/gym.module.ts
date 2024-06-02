@@ -16,6 +16,16 @@ import { RegistrarClienteComponent } from './pages/registrar-cliente/registrar-c
 import { RegistroPagosComponent } from './pages/registro-pagos/registro-pagos.component';
 import { ReportesComponent } from './pages/reportes/reportes.component';
 import { EstadoCuentasComponent } from './pages/estado-cuentas/estado-cuentas.component';
+import { SelectSearchComponent } from './components/select.search/select.search.component';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { ModalAlert } from './components/modals/modal.alert/modal.alert.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DataTableComponent } from './components/data.table/data.table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 
@@ -27,7 +37,10 @@ import { EstadoCuentasComponent } from './pages/estado-cuentas/estado-cuentas.co
     RegistrarClienteComponent,
     RegistroPagosComponent,
     ReportesComponent,
-    EstadoCuentasComponent
+    EstadoCuentasComponent,
+    SelectSearchComponent,
+    ModalAlert,
+    DataTableComponent
   ],
   exports: [
     NgxSpinnerModule
@@ -42,7 +55,14 @@ import { EstadoCuentasComponent } from './pages/estado-cuentas/estado-cuentas.co
     MatSnackBarModule,
     MatInputModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    NgxMatSelectSearchModule,
+    MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatTooltipModule
   ]
 })
 export class GymModule { }

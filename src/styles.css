@@ -34,3 +34,141 @@ body { margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif; 
     background-color: var(--color-white);
 }
+
+.modal-dialog-container {
+    width: 90vw;
+    height: 80vh;
+    max-width: 500px;
+    max-height: 340px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-dialog-header {
+    width: 100%;
+    height: calc(100% - 190px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-seconsdary1);
+}
+
+.modal-dialog-icon {
+    width: auto;
+    height: auto;
+}
+
+.icon-image {
+    background-color: var(--color-seconsdary1);
+    width: 100px;
+    margin: 5px;
+}
+
+.modal-dialog-body {
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-dialog-title {
+    font-size: 22px;
+    font-family: ff-app-bold;
+    margin-bottom: 20px;
+}
+
+.modal-dialog-message {
+    font-size: 16px;
+    text-align: center;
+    padding: 1px 10px;
+}
+
+.modal-dialog-footer {
+    height: 70px;
+    width: 100%;
+    margin: 0 0 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-dialog-button {
+    background-color: var(--color-seconsdary1);
+    color: var(--color-white);
+    width: 180px;
+    height: 70%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 26px;
+    margin: 0 5px;
+    cursor: pointer;
+    outline: 0 !important;
+}
+
+/*Para todo mat-form-field */
+
+button:focus {
+    outline: 0px auto transparent !important;
+}
+
+input.mat-input-element,
+textarea.mat-input-element {
+    padding-left: 5px !important;
+}
+
+.mat-form-field {
+    font-size: 17px;
+    width: 100% !important;
+}
+
+.mat-form-field-appearance-outline:not(.mat-form-field-disabled) .mat-form-field-flex:hover .mat-form-field-outline {
+    opacity: 1 !important;
+    color: var(--main-app-color);
+}
+
+.mat-form-field-outline {
+    border-radius: 30px !important;
+    border: 2px solid;
+    background-color: rgb(250, 250, 250);
+}
+
+.mat-form-field-infix {
+    border-top: 0em solid !important;
+    margin-bottom: -5px;
+    margin-top: 2px;
+}
+
+.mat-form-field-outline-start,
+.mat-form-field-outline-end {
+    border-right: 0px solid !important;
+    border-left: 0px solid !important;
+    border-bottom: 0px solid !important;
+    border-top: 0px solid !important;
+}
+
+
+.mat-form-field.mat-form-field-appearance-outline.mat-form-field-should-float .mat-form-field-outline-start,
+.mat-form-field.mat-form-field-appearance-outline.mat-form-field-should-float .mat-form-field-outline-gap,
+.mat-form-field.mat-form-field-appearance-outline.mat-form-field-should-float .mat-form-field-outline-end {
+  border-width: 0 !important;
+}
+
+/* Eliminamos la linea horizontal superior e inferios de los mat */
+.mat-form-field.mat-form-field-appearance-outline .mat-form-field-outline-start,
+.mat-form-field.mat-form-field-appearance-outline .mat-form-field-outline-gap,
+.mat-form-field.mat-form-field-appearance-outline .mat-form-field-outline-end {
+  border-width: 0 !important;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.max-width-container {
+    max-width: 100%; /* Establece el ancho máximo según sea necesario */
+    overflow-x: auto; /* Agrega una barra de desplazamiento horizontal si el contenido excede el ancho máximo */
+    margin: 0 auto; /* Centra el contenido horizontalmente */
+}
