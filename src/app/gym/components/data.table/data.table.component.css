@@ -40,3 +40,16 @@ th {
 .mat-header-cell, th{
     color: rgb(255, 255, 255);
 }
+
+.button-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.button-container button {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    background-color: transparent;
+    border-color: transparent;
+}

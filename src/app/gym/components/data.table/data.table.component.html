@@ -46,7 +46,7 @@
 
             <ng-container *ngIf="dt=='opciones'">
                 <th class="center-buttons-options" style="width: 14%;" mat-header-cell *matHeaderCellDef mat-sort-header> {{namesColumns[i]}}</th>
-                <td mat-cell *matCellDef="let element">
+                <td mat-cell *matCellDef="let element" class="button-container">
                     <ng-container *ngFor="let item of element.opciones; index as i;">
                         <button mat-icon-button [class]="item.class" style="margin-right: 10px;" [matTooltip]="item.tool_tip" (click)="edit2(element, ((item.id)?item.id:i) )">
                             <mat-icon [color]="item.color"   >{{item.icon}}</mat-icon>
