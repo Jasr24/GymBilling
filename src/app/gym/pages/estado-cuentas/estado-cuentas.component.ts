@@ -51,15 +51,25 @@ export class EstadoCuentasComponent extends Base implements OnInit{
   obtenerClientes(){
     this.spinner.show();
     setTimeout(() => {
-      this.DataGenericService.obtenerTodosDatosTable("clientes").subscribe(r => {
-        this.spinner.hide();
-        if (r.success) {
-          this.dtList = r.data
-        } else {
-          this.openDialogs('Error', 'Ha ocurrido un error, por favor inténtelo nuevamente más tarde.', 2);
-        }
-      });
-    }, 3000);
+      try {
+        this.DataGenericService.obtenerTodosDatosTable("clientes").subscribe(r => {
+          console.log(r)
+          this.spinner.hide();
+          if (r.success) {
+            this.dtList = r.data
+          } else {
+            this.openDialogs('Error', 'Ha ocurrido un error, por favor inténtelo nuevamente más tarde.', 2);
+          }
+        },
+        error => {
+          this.spinner.hide();
+          console.error('Ha ocurrido un error en la solicitud:', error);
+          this.openDialogs('Error', 'Ha ocurrido un error en la solicitud, por favor inténtelo nuevamente más tarde.', 2);
+        });
+      } catch (err) {
+        console.log(err)
+      }
+    }, 1500);
   }
 
   openDialogs(title: String, message: String, type: number): void {
