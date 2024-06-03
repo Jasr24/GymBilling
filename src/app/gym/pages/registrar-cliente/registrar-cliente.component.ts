@@ -6,6 +6,7 @@ import { GenericI } from 'src/app/models/models';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { DataGenericService } from 'src/app/services/data/data.generic.service';
 import { ModalAlert } from '../../components/modals/modal.alert/modal.alert.component';
+import { ClienteResponseI } from '../../interfaces/DataBaseResponse';
 
 @Component({
   selector: 'app-registrar-cliente',
@@ -85,7 +86,7 @@ export class RegistrarClienteComponent extends Base {
       } catch (err) {
         console.log(err)
       }
-    }, 1500);
+    }, 500);
   }
 
   openDialogs(title: String, message: String, type: number): void {
@@ -132,6 +133,35 @@ export class RegistrarClienteComponent extends Base {
     } else {
       if(this.data && this.data.data){
         //Actualizar cliente
+        this.spinner.show();
+        setTimeout(() => {
+          try {
+
+            const jsonreques = {
+              table: "clientes",
+              data: this.form.value,
+              id: this.data.data.id
+            }
+
+            this.dataGenericService.updateElementoTable(jsonreques).subscribe(r => {
+              this.spinner.hide();
+              if (r.success) {
+                this.form.reset();
+                this.dialogRef.close(true);
+                this.openDialogs('Wow!!!', 'Cliente actualizado con éxito.', 1);
+              } else {
+                this.openDialogs('Error', 'Ha ocurrido un error, por favor inténtelo nuevamente más tarde.', 2);
+              }
+            },
+            error => {
+              console.error('Ha ocurrido un error en la solicitud:', error);
+              this.spinner.hide();
+              this.openDialogs('Error', 'Ha ocurrido un error en la solicitud, por favor inténtelo nuevamente más tarde.', 2);
+            });
+          } catch (err) {
+            console.log(err)
+          }
+        }, 500);
       } else {
         //Crear cliente
         this.spinner.show();
@@ -160,7 +190,7 @@ export class RegistrarClienteComponent extends Base {
           } catch (err) {
             console.log(err)
           }
-        }, 1500);
+        }, );
       }
     }
   }

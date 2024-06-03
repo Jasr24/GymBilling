@@ -48,7 +48,7 @@ export class EstadoCuentasComponent extends Base implements OnInit{
     public dialog: MatDialog
   ){
     super();
-    this.obtenerClientes()
+    this.obtenerClientes();
   }
 
   ngOnInit(): void {}
@@ -102,7 +102,7 @@ export class EstadoCuentasComponent extends Base implements OnInit{
       } catch (err) {
         console.log(err)
       }
-    }, 1500);
+    }, 500);
   }
 
   action($event: any){
@@ -115,7 +115,9 @@ export class EstadoCuentasComponent extends Base implements OnInit{
           data : $event.data
         }
       }).afterClosed().subscribe(result => {
-        console.log(result)
+        if(result){
+          this.obtenerClientes();
+        }
       });
     } else if ($event.id == 3){
       console.log("Eliminar")

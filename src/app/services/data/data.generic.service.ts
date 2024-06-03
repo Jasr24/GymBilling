@@ -27,4 +27,9 @@ export class DataGenericService{
     createElementoTable(data: any){
         return this._r.postTable(data, Constants.URL_GENERIC_GET_TABLE)
     }
+
+    //Actualizar elemento en una tabla
+    updateElementoTable(data: any){
+        return this._r.putTable(data, `${Constants.URL_GENERIC_GET_TABLE}/${data.id}`)
+    }
 }
