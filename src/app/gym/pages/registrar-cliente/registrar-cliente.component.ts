@@ -1,8 +1,11 @@
 import { Component, Inject, Optional } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Base } from '../../components/base.class';
 import { GenericI } from 'src/app/models/models';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { DataGenericService } from 'src/app/services/data/data.generic.service';
+import { ModalAlert } from '../../components/modals/modal.alert/modal.alert.component';
 
 @Component({
   selector: 'app-registrar-cliente',
@@ -19,8 +22,8 @@ export class RegistrarClienteComponent extends Base {
     {id : 0, abrev : "Inactivo", label : "Inactivo"}
   ];
   public tipoDocumentos: GenericI[] = [
-    {id : 1, abrev : "Cedula coidadanía", label : "CC"},
-    {id : 0, abrev : "Targeta identidad", label : "TI"}
+    {id : 1, abrev : "Cedula coidadanía", nombre : "CC"},
+    {id : 0, abrev : "Targeta identidad", nombre : "TI"}
   ]
 
   public estadoControl: FormControl = new FormControl(); // Nuevo FormControl para manejar el valor
@@ -30,10 +33,14 @@ export class RegistrarClienteComponent extends Base {
   constructor(
     @Optional() public dialogRef: MatDialogRef<RegistrarClienteComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private spinner: NgxSpinnerService,
+    private DataGenericService: DataGenericService,
+    public dialog: MatDialog
   ) {
     super()
     this.initForm();
+    this.obtenerTiposDocumentos();
     if(data){
       this.isDialog = true;
     }
@@ -55,6 +62,41 @@ export class RegistrarClienteComponent extends Base {
     this.tipoDocumentControl = this.form.get('tipo_documento') as FormControl || new FormControl();
   }
 
+  obtenerTiposDocumentos(){
+    this.spinner.show();
+    setTimeout(() => {
+      try {
+        this.DataGenericService.obtenerTodosDatosTable("tipos_documentos").subscribe(r => {
+          console.log(r)
+          this.spinner.hide();
+          if (r.success) {
+            this.tipoDocumentos = r.data
+          } else {
+            this.openDialogs('Error', 'Ha ocurrido un error, por favor inténtelo nuevamente más tarde.', 2);
+          }
+        },
+        error => {
+          console.error('Ha ocurrido un error en la solicitud:', error);
+          this.spinner.hide();
+          this.openDialogs('Error', 'Ha ocurrido un error en la solicitud, por favor inténtelo nuevamente más tarde.', 2);
+        });
+      } catch (err) {
+        console.log(err)
+      }
+    }, 1500);
+  }
+
+  openDialogs(title: String, message: String, type: number): void {
+    this.dialog.open(ModalAlert, {
+      disableClose: true,
+      data: {
+        title: title,
+        message: message,
+        type: type
+      }
+    }).afterClosed().subscribe(result => {
+    });
+  }
 
   clickCA() {
 

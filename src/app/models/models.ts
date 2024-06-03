@@ -8,5 +8,6 @@ export interface AnswerRequestI {
 export interface GenericI {
     id: number;    
     abrev: string;
-    label: string;
+    label?: string;
+    nombre?: string;
 }
