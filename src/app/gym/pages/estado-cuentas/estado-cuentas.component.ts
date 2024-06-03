@@ -61,7 +61,13 @@ export class EstadoCuentasComponent extends Base implements OnInit{
           console.log(r)
           this.spinner.hide();
           if (r.success) {
+            console.log(r.data)
             this.dtList = r.data.map((cliente: ClienteResponseI) => {
+              if(cliente.estado == 1){
+                cliente.estado = "Activo"
+              } else {
+                cliente.estado = "Inactivo"
+              }
               return {
                 ...cliente,
                 opciones: [
