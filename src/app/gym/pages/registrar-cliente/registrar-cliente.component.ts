@@ -43,7 +43,6 @@ export class RegistrarClienteComponent extends Base {
     this.obtenerTiposDocumentos();
     if(data){
       this.isDialog = true;
-      console.log(data.data)
     }
   }
 
@@ -124,7 +123,13 @@ export class RegistrarClienteComponent extends Base {
   }
 
   clickCA() {
-
+    this.form.markAllAsTouched();
+    if (this.form.invalid) {
+      this.openDialogs('Advertencia', 'Por favor, complete todos los campos requeridos.', 3);
+      return;
+    } else {
+      //Metodo para actualizar cliente
+    }
   }
 
   close(): void {

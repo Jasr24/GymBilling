@@ -58,10 +58,8 @@ export class EstadoCuentasComponent extends Base implements OnInit{
     setTimeout(() => {
       try {
         this.DataGenericService.obtenerTodosDatosTable("clientes").subscribe(r => {
-          console.log(r)
           this.spinner.hide();
           if (r.success) {
-            console.log(r.data)
             this.dtList = r.data.map((cliente: ClienteResponseI) => {
               if(cliente.estado == 1){
                 cliente.estado = "Activo"
