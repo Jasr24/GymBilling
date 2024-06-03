@@ -1,0 +1,69 @@
+.modal-dialog-container {
+    width: 90vw;
+    height: 80vh;
+    max-width: 550px;
+    max-height: 600px;
+}
+
+.modal-dialog-header {
+    width: 100%;
+    color: aliceblue;
+    height: calc(100% - 450px);
+}
+
+.modal-dialog-body {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 360px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Lo siguiente para el componente en si (Sin que sea dialog) */
+
+.modal-container {
+    width: 100vw;
+}
+
+.modal-header {
+    width: 100%;
+    color: aliceblue;
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-seconsdary1);
+}
+
+.modal-body {
+    margin-top: 50px;
+    padding-top: 20px;
+    padding-left: 200px;
+    padding-right: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.modal-footer {
+    height: 70px;
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 990px) {
+    .modal-dialog-body {
+        display: block;
+    }
+}
+
+@media (max-width: 700px) {
+    .modal-body {
+        padding: 20px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}

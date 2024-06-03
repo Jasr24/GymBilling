@@ -4,3 +4,9 @@ export interface AnswerRequestI {
     data: any,
     message: any
 }
+
+export interface GenericI {
+    id: number;    
+    abrev: string;
+    label: string;
+}

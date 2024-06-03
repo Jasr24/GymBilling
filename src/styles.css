@@ -172,3 +172,8 @@ mat-form-field {
     overflow-x: auto; /* Agrega una barra de desplazamiento horizontal si el contenido excede el ancho máximo */
     margin: 0 auto; /* Centra el contenido horizontalmente */
 }
+
+.popup-header-container-title{
+    font-size: 30px;
+    font-weight: bold;
+}

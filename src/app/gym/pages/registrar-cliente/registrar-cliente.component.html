@@ -1,10 +1,81 @@
-<app-header [isLogin]="true" [menu]="true"></app-header>
+<app-header *ngIf="!isDialog" [isLogin]="true" [menu]="true"></app-header>
 
 
-<div class="wrapper">
-    <div class="container">
-        <div class="row">
-            <p>registrar-cliente works!</p>
-        <div>
-    <div>
-<div>
+<div [ngClass]="{'modal-dialog-container': isDialog, 'modal-container': !isDialog}">
+    <div [ngClass]="{'modal-dialog-header': isDialog, 'modal-header': !isDialog}">
+        <div *ngIf="isDialog" class="popup-header-container-title">Editar Cliente</div>
+        <div *ngIf="!isDialog" class="popup-header-container-title">Nuevo Cliente</div>
+    </div>
+    
+    <div [ngClass]="{'modal-dialog-body': isDialog, 'modal-body': !isDialog}">
+        <form [formGroup]="form">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput maxlength="26" autocomplete="off" placeholder="Nombres" formControlName="nombres" required>
+                        <mat-error class="mat-error" *ngIf="form.controls['nombres'].hasError('required')">
+                            Ingrese el nombre
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Apellidos</mat-label>
+                        <input matInput maxlength="26" autocomplete="off" placeholder="Apellidos" formControlName="apellidos" required>
+                        <mat-error class="mat-error" *ngIf="form.controls['apellidos'].hasError('required')">
+                            Ingrese el apellido
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <app-select-search [_valueSelected]="tipoDocumentControl" [mapError]="{'required':'Seleccione un tipo de documento'}" [data]="tipoDocumentos" [titulo]="'Seleccionar tipo documento'" [nameBy]="'label'"></app-select-search>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Número de documento</mat-label>
+                        <input matInput maxlength="12" autocomplete="off" placeholder="Número documento" formControlName="numero_documento" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+                        <mat-error class="mat-error" *ngIf="form.controls['numero_documento'].hasError('required')">
+                            Ingrese el número de documento.
+                        </mat-error>
+                        <mat-error class="mat-error" *ngIf="form.controls['numero_documento'].hasError('minlength')">
+                            Ingrese un número de documento válido (mínimo 5 caracteres).
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput maxlength="40" placeholder="ex. nombre@coreo.com" formControlName="correo">
+                        <mat-error class="mat-error" *ngIf="form.controls['correo'].hasError('required')">
+                            Ingrese el email del cliente
+                        </mat-error>
+                        <mat-error class="mat-error" *ngIf="form.controls['correo'].hasError('email')">
+                            Ingrese un email válido
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Número de celular</mat-label>
+                        <input matInput maxlength="10" placeholder="número de teléfono" formControlName="celular" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                        <mat-error class="mat-error" *ngIf="form.controls['celular'].hasError('required')">
+                            Ingrese un numero celular
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                
+                <div class="col-12 col-lg-6">
+                    <app-select-search [_valueSelected]="estadoControl" [mapError]="{'required':'Seleccione un estado'}" [data]="estados" [titulo]="'Estado'" [nameBy]="'label'"></app-select-search>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div [ngClass]="{'modal-dialog-footer': isDialog, 'modal-footer': !isDialog}">
+        <button *ngIf="isDialog" mat-raised-button class="modal-dialog-button" (click)="clickCA()">Actualizar</button>
+            <button *ngIf="!isDialog" mat-raised-button class="modal-dialog-button" (click)="clickCA()">Guardar</button>
+            <button *ngIf="isDialog" mat-raised-button class="modal-dialog-button" (click)="close()">Cancelar</button>
+    </div>
+</div>
