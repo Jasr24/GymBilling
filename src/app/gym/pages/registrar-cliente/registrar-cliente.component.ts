@@ -19,11 +19,11 @@ export class RegistrarClienteComponent extends Base {
 
   public estados: GenericI[] = [
     {id : 1, abrev : "Activo", label : "Activo"},
-    {id : 0, abrev : "Inactivo", label : "Inactivo"}
+    {id : 2, abrev : "Inactivo", label : "Inactivo"}
   ];
   public tipoDocumentos: GenericI[] = [
     {id : 1, abrev : "Cedula coidadanía", nombre : "CC"},
-    {id : 0, abrev : "Targeta identidad", nombre : "TI"}
+    {id : 2, abrev : "Targeta identidad", nombre : "TI"}
   ]
 
   public estadoControl: FormControl = new FormControl(); // Nuevo FormControl para manejar el valor
@@ -35,7 +35,7 @@ export class RegistrarClienteComponent extends Base {
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private spinner: NgxSpinnerService,
-    private DataGenericService: DataGenericService,
+    private dataGenericService: DataGenericService,
     public dialog: MatDialog
   ) {
     super()
@@ -51,21 +51,22 @@ export class RegistrarClienteComponent extends Base {
       //id: [0],
       nombres: ["", [Validators.required]],
       apellidos: ["", [Validators.required]],
-      tipo_documento: ["", [Validators.required]],
-      numero_documento: ["", [Validators.required, Validators.minLength(5)]],
-      correo: ["", [Validators.required, Validators.email]],
-      celular: ["", [Validators.required]],
+      documento_id: ["", [Validators.required]],
+      identificacion: ["", [Validators.required, Validators.minLength(5)]],
+      email: ["", [Validators.required, Validators.email]],
+      telefono: ["", [Validators.required]],
+      nota: ["", []],
       estado: ["", [Validators.required]]
     });
     this.estadoControl = this.form.get('estado') as FormControl || new FormControl();
-    this.tipoDocumentControl = this.form.get('tipo_documento') as FormControl || new FormControl();
+    this.tipoDocumentControl = this.form.get('documento_id') as FormControl || new FormControl();
   }
 
   obtenerTiposDocumentos(){
     this.spinner.show();
     setTimeout(() => {
       try {
-        this.DataGenericService.obtenerTodosDatosTable("tipos_documentos").subscribe(r => {
+        this.dataGenericService.obtenerTodosDatosTable("tipos_documentos").subscribe(r => {
           this.spinner.hide();
           if (r.success) {
             this.tipoDocumentos = r.data
@@ -101,7 +102,7 @@ export class RegistrarClienteComponent extends Base {
 
   private loadData(data: any): void {
     let tipoIdentificacion = 0;
-    const documento = this.tipoDocumentos.find(doc => doc.nombre === data.documentos_id);
+    const documento = this.tipoDocumentos.find(doc => doc.nombre === data.documento_id);
     if (documento) {
         tipoIdentificacion = documento.id;
     }
@@ -114,10 +115,11 @@ export class RegistrarClienteComponent extends Base {
     this.form.patchValue({
       nombres: data.nombres,
       apellidos: data.apellidos,
-      tipo_documento: tipoIdentificacion,
-      numero_documento: data.identificacion,
-      correo: data.email,
-      celular: data.telefono,
+      documento_id: tipoIdentificacion,
+      identificacion: data.identificacion,
+      email: data.email,
+      telefono: data.telefono,
+      nota: data.nota,
       estado: estado
     });
   }
@@ -128,7 +130,38 @@ export class RegistrarClienteComponent extends Base {
       this.openDialogs('Advertencia', 'Por favor, complete todos los campos requeridos.', 3);
       return;
     } else {
-      //Metodo para actualizar cliente
+      if(this.data && this.data.data){
+        //Actualizar cliente
+      } else {
+        //Crear cliente
+        this.spinner.show();
+        setTimeout(() => {
+          try {
+
+            const jsonreques = {
+              table: "clientes",
+              data: this.form.value
+            }
+
+            this.dataGenericService.createElementoTable(jsonreques).subscribe(r => {
+              this.spinner.hide();
+              if (r.success) {
+                this.form.reset();
+                this.openDialogs('Wow!!!', 'Cliente creado con éxito.', 1);
+              } else {
+                this.openDialogs('Error', 'Ha ocurrido un error, por favor inténtelo nuevamente más tarde.', 2);
+              }
+            },
+            error => {
+              console.error('Ha ocurrido un error en la solicitud:', error);
+              this.spinner.hide();
+              this.openDialogs('Error', 'Ha ocurrido un error en la solicitud, por favor inténtelo nuevamente más tarde.', 2);
+            });
+          } catch (err) {
+            console.log(err)
+          }
+        }, 1500);
+      }
     }
   }
 

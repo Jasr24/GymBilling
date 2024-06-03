@@ -33,7 +33,7 @@ export class EstadoCuentasComponent extends Base implements OnInit{
     //"id",
     "nombres",
     "apellidos",
-    "documentos_id",
+    "documento_id",
     "identificacion",
     "telefono",
     "email",

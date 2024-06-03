@@ -34,11 +34,11 @@
                 <div class="col-12 col-lg-6">
                     <mat-form-field appearance="outline">
                         <mat-label>Número de documento</mat-label>
-                        <input matInput maxlength="12" autocomplete="off" placeholder="Número documento" formControlName="numero_documento" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
-                        <mat-error class="mat-error" *ngIf="form.controls['numero_documento'].hasError('required')">
+                        <input matInput maxlength="12" autocomplete="off" placeholder="Número documento" formControlName="identificacion" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+                        <mat-error class="mat-error" *ngIf="form.controls['identificacion'].hasError('required')">
                             Ingrese el número de documento.
                         </mat-error>
-                        <mat-error class="mat-error" *ngIf="form.controls['numero_documento'].hasError('minlength')">
+                        <mat-error class="mat-error" *ngIf="form.controls['identificacion'].hasError('minlength')">
                             Ingrese un número de documento válido (mínimo 5 caracteres).
                         </mat-error>
                     </mat-form-field>
@@ -46,11 +46,11 @@
                 <div class="col-12 col-lg-6">
                     <mat-form-field appearance="outline">
                         <mat-label>Email</mat-label>
-                        <input matInput maxlength="40" placeholder="ex. nombre@coreo.com" formControlName="correo">
-                        <mat-error class="mat-error" *ngIf="form.controls['correo'].hasError('required')">
+                        <input matInput maxlength="40" placeholder="ex. nombre@coreo.com" formControlName="email">
+                        <mat-error class="mat-error" *ngIf="form.controls['email'].hasError('required')">
                             Ingrese el email del cliente
                         </mat-error>
-                        <mat-error class="mat-error" *ngIf="form.controls['correo'].hasError('email')">
+                        <mat-error class="mat-error" *ngIf="form.controls['email'].hasError('email')">
                             Ingrese un email válido
                         </mat-error>
                     </mat-form-field>
@@ -59,13 +59,20 @@
                 <div class="col-12 col-lg-6">
                     <mat-form-field appearance="outline">
                         <mat-label>Número de celular</mat-label>
-                        <input matInput maxlength="10" placeholder="número de teléfono" formControlName="celular" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
-                        <mat-error class="mat-error" *ngIf="form.controls['celular'].hasError('required')">
+                        <input matInput maxlength="10" placeholder="número de teléfono" formControlName="telefono" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                        <mat-error class="mat-error" *ngIf="form.controls['telefono'].hasError('required')">
                             Ingrese un numero celular
                         </mat-error>
                     </mat-form-field>
                 </div>
                 
+                <div class="col-12 col-lg-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Observación</mat-label>
+                        <input matInput autocomplete="off" placeholder="Observación" formControlName="nota" required>
+                    </mat-form-field>
+                </div>
+
                 <div class="col-12 col-lg-6">
                     <app-select-search [_valueSelected]="estadoControl" [mapError]="{'required':'Seleccione un estado'}" [data]="estados" [titulo]="'Estado'" [nameBy]="'label'"></app-select-search>
                 </div>

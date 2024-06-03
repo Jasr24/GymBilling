@@ -18,7 +18,13 @@ export class DataGenericService{
         return this._r.getInfoTable(tabla, Constants.URL_GENERIC_GET_TABLE)
     }
 
+    //Obtener un dato de la tabla
     obtenerElementoTable(tabla: string, id: number){
         return this._r.getInfoTable(tabla, `${Constants.URL_GENERIC_GET_TABLE}/${id}`)
+    }
+
+    //Crear elemento en una tabla
+    createElementoTable(data: any){
+        return this._r.postTable(data, Constants.URL_GENERIC_GET_TABLE)
     }
 }
