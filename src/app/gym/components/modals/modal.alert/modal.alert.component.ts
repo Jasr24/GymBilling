@@ -9,7 +9,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class ModalAlert {
   title: String = "";
   message: String = "";
-  confirm:boolean =false;
+  cancelable:boolean =false;
   
   type:number = 1;
     
@@ -22,7 +22,9 @@ export class ModalAlert {
     this.title = this.data.title;
     this.message = this.data.message;
     this.type = this.data.type;    
-    this.confirm= this.data.confirm!=null
+    if(this.data.cancelable!=null) {
+      this.cancelable = true
+    }
   }
 
   close(){

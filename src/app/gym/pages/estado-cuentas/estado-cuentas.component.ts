@@ -120,32 +120,44 @@ export class EstadoCuentasComponent extends Base implements OnInit{
         }
       });
     } else if ($event.id == 3){
-      this.spinner.show();
-        setTimeout(() => {
-          try {
-
-            const jsonreques = {
-              table: "clientes",
-              id: $event.data.id
-            }
-            this.dataGenericService.deleteElementoTable(jsonreques).subscribe(r => {
-              if (r.success) {
-                this.obtenerClientes();
-                this.openDialogs('Wow!!!', 'Cliente eliminado con éxito.', 1);
-              } else {
-                this.spinner.hide();
-                this.openDialogs('Error', 'Ha ocurrido un error, por favor inténtelo nuevamente más tarde.', 2);
+      this.dialog.open(ModalAlert, {
+        disableClose: true,
+        data: {
+          title: "Eliminar cliente",
+          message: "¿Está seguro de eliminar a este cliente?",
+          type: 3,
+          cancelable: true
+        }
+      }).afterClosed().subscribe(result => {
+        if(result){
+          this.spinner.show();
+          setTimeout(() => {
+            try {
+  
+              const jsonreques = {
+                table: "clientes",
+                id: $event.data.id
               }
-            },
-            error => {
-              console.error('Ha ocurrido un error en la solicitud:', error);
-              this.spinner.hide();
-              this.openDialogs('Error', 'Ha ocurrido un error en la solicitud, por favor inténtelo nuevamente más tarde.', 2);
-            });
-          } catch (err) {
-            console.log(err)
-          }
-        }, 500);
+              this.dataGenericService.deleteElementoTable(jsonreques).subscribe(r => {
+                if (r.success) {
+                  this.obtenerClientes();
+                  this.openDialogs('Wow!!!', 'Cliente eliminado con éxito.', 1);
+                } else {
+                  this.spinner.hide();
+                  this.openDialogs('Error', 'Ha ocurrido un error, por favor inténtelo nuevamente más tarde.', 2);
+                }
+              },
+              error => {
+                console.error('Ha ocurrido un error en la solicitud:', error);
+                this.spinner.hide();
+                this.openDialogs('Error', 'Ha ocurrido un error en la solicitud, por favor inténtelo nuevamente más tarde.', 2);
+              });
+            } catch (err) {
+              console.log(err)
+            }
+          }, 500);
+        }
+      });
     }
   }
 

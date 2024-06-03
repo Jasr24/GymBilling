@@ -11,6 +11,7 @@
         <span class="modal-dialog-message" style="text-align: center;">{{ message }}</span>
     </div>
     <div class="modal-dialog-footer">
-        <div class="modal-dialog-button" (click)="close() ">Aceptar</div>
+        <div *ngIf="cancelable" class="modal-dialog-button cancel" (click)="close() ">Cancelar</div>
+        <div class="modal-dialog-button" (click)="accept() ">Aceptar</div>
     </div>
 </div>
