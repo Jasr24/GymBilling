@@ -111,10 +111,10 @@ export class EstadoCuentasComponent extends Base implements OnInit{
     if($event.id == 1){
       console.log("Ver")
     } else if ($event.id == 2){
-      console.log("Editar")
       this.dialog.open(RegistrarClienteComponent, {
         disableClose: true,
         data: {
+          data : $event.data
         }
       }).afterClosed().subscribe(result => {
         console.log(result)

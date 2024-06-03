@@ -43,8 +43,8 @@ export class RegistrarClienteComponent extends Base {
     this.obtenerTiposDocumentos();
     if(data){
       this.isDialog = true;
+      console.log(data.data)
     }
-    console.log(this.isDialog)
   }
 
   initForm() {
@@ -67,10 +67,12 @@ export class RegistrarClienteComponent extends Base {
     setTimeout(() => {
       try {
         this.DataGenericService.obtenerTodosDatosTable("tipos_documentos").subscribe(r => {
-          console.log(r)
           this.spinner.hide();
           if (r.success) {
             this.tipoDocumentos = r.data
+            if(this.data && this.data.data){
+              this.loadData(this.data.data);
+            }
           } else {
             this.openDialogs('Error', 'Ha ocurrido un error, por favor inténtelo nuevamente más tarde.', 2);
           }
@@ -95,6 +97,29 @@ export class RegistrarClienteComponent extends Base {
         type: type
       }
     }).afterClosed().subscribe(result => {
+    });
+  }
+
+  private loadData(data: any): void {
+    let tipoIdentificacion = 0;
+    const documento = this.tipoDocumentos.find(doc => doc.nombre === data.documentos_id);
+    if (documento) {
+        tipoIdentificacion = documento.id;
+    }
+    var estado = 0;
+    if(data.estado == "Activo"){
+      estado = 1;
+    } else {
+      estado = 2;
+    }
+    this.form.patchValue({
+      nombres: data.nombres,
+      apellidos: data.apellidos,
+      tipo_documento: tipoIdentificacion,
+      numero_documento: data.identificacion,
+      correo: data.email,
+      celular: data.telefono,
+      estado: estado
     });
   }
 
