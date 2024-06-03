@@ -144,12 +144,12 @@ export class RegistrarClienteComponent extends Base {
             }
 
             this.dataGenericService.updateElementoTable(jsonreques).subscribe(r => {
-              this.spinner.hide();
               if (r.success) {
                 this.form.reset();
                 this.dialogRef.close(true);
                 this.openDialogs('Wow!!!', 'Cliente actualizado con éxito.', 1);
               } else {
+                this.spinner.hide();
                 this.openDialogs('Error', 'Ha ocurrido un error, por favor inténtelo nuevamente más tarde.', 2);
               }
             },
