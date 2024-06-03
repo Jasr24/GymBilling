@@ -32,4 +32,9 @@ export class DataGenericService{
     updateElementoTable(data: any){
         return this._r.putTable(data, `${Constants.URL_GENERIC_GET_TABLE}/${data.id}`)
     }
+
+    //Eliminar elemento en una tabla
+    deleteElementoTable(data: any){
+        return this._r.deleteTable(data, `${Constants.URL_GENERIC_GET_TABLE}/${data.id}`)
+    }
 }

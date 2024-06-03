@@ -49,6 +49,15 @@ export class RequestService {
     );
   }
 
+  deleteTable(data: any, url: string): Observable<AnswerRequestI> {
+    const params = new HttpParams()
+    .set('table', data.table)
+
+    return <Observable<AnswerRequestI>>(
+      this.httpClient.delete(url, { ...this.httpOptions, params })
+    );
+  }
+
   // sendRequest(data: any, url: string): Observable<AnswerRequestI> {
   //   return <Observable<AnswerRequestI>>(
   //     this.httpClient.post(url, data, this.httpOptions)
