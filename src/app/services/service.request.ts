@@ -64,4 +64,10 @@ export class RequestService {
   //   );
   // }
 
+  login(json: JSON, url: string): Observable<AnswerRequestI> {
+
+    return <Observable<AnswerRequestI>>(
+      this.httpClient.post(url, json, this.httpOptions)
+    );
+  }
 }

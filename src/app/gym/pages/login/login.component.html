@@ -12,9 +12,9 @@
 
                         <div class="container text-center">
                             <mat-form-field appearance="outline">
-                                <mat-label>Correo electrónico</mat-label>
-                                <input matInput placeholder="josex.1995@hotmail.com" formControlName="user">
-                                <mat-error *ngIf="form.get('user')?.invalid">Escriba un email</mat-error>
+                                <mat-label>Usuario</mat-label>
+                                <input matInput placeholder="1106785681" formControlName="user" inputmode="numeric" pattern="[0-9]*" (input)="onInputChange($event)">
+                                <mat-error *ngIf="form.get('user')?.invalid">Escriba el usuario</mat-error>
                             </mat-form-field>
                         </div>
 
