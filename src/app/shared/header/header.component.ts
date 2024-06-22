@@ -4,6 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Location } from '@angular/common';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { AuthService } from 'src/app/services/data/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -26,6 +27,7 @@ export class HeaderComponent implements  AfterViewChecked{
               private location: Location,        
               private spinner: NgxSpinnerService,
               private cdRef:ChangeDetectorRef,
+              private authService: AuthService,
               private observer: BreakpointObserver,
             ){
               this.filasMenu = [
@@ -51,7 +53,7 @@ export class HeaderComponent implements  AfterViewChecked{
                 },
                 {
                   ruta: "/login",
-                  nombreRuta: "Cerrar sesion"
+                  nombreRuta: "Cerrar sesión"
                 }
               ]
             }
@@ -74,6 +76,7 @@ export class HeaderComponent implements  AfterViewChecked{
   }
 
   onLogoutClick(item: any) {
+    console.log(item)
      if (item.nombreRuta === "Cerrar sesión") {
        this.logout();
      }
@@ -81,6 +84,7 @@ export class HeaderComponent implements  AfterViewChecked{
   }
   
   logout(){
+    this.authService.logout()
     this.router.navigate(['/login']);
     this.menu = false;
   }

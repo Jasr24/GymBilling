@@ -7,18 +7,23 @@ import { RegistrarClienteComponent } from './gym/pages/registrar-cliente/registr
 import { RegistroPagosComponent } from './gym/pages/registro-pagos/registro-pagos.component';
 import { ReportesComponent } from './gym/pages/reportes/reportes.component';
 import { EstadoCuentasComponent } from './gym/pages/estado-cuentas/estado-cuentas.component';
+import { AuthGuard } from './services/auth/auth.guard';
+import { AuthredirectGuard } from './services/auth/authredirect.guard';
 
 const routes: Routes = [
   {
     path: 'home',
+    canActivate: [AuthredirectGuard],
     component: HomeComponent
   },
   {
     path: 'login',
+    canActivate: [AuthredirectGuard],
     component: LoginComponent
   },
   {
     path: 'admin',
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'home',
@@ -39,6 +44,10 @@ const routes: Routes = [
       {
         path: 'estado-cuentas',
         component: EstadoCuentasComponent
+      },
+      {
+        path: '**',
+        redirectTo: 'home'
       }
     ]
   },

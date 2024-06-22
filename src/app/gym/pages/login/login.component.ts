@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { DataService } from 'src/app/services/data/data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalAlert } from '../../components/modals/modal.alert/modal.alert.component';
+import { AuthService } from 'src/app/services/data/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -21,14 +22,17 @@ export class LoginComponent {
     password: ['', Validators.required]
   });
     
-  constructor ( private snack: MatSnackBar,
-                private router: Router,                
-                private location: Location,
-                private toastr: ToastrService,
-                private fb: FormBuilder,
-                private dataService: DataService,
-                public dialog: MatDialog,
-                private spinner: NgxSpinnerService) {}
+  constructor ( 
+    private snack: MatSnackBar,
+    private router: Router,                
+    private location: Location,
+    private toastr: ToastrService,
+    private fb: FormBuilder,
+    private dataService: DataService,
+    private authService: AuthService,
+    public dialog: MatDialog,
+    private spinner: NgxSpinnerService
+  ) {}
 
   formSubmit() {
 
@@ -50,6 +54,7 @@ export class LoginComponent {
       this.dataService.login(json).subscribe(r => {
         this.spinner.hide();
         if (r.success && r.status == 1) {
+          this.authService.saveLogin(r.data)
           this.router.navigate(['/admin/home']);
         } else {
           if (r.status == 0){
