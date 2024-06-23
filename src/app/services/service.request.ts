@@ -70,4 +70,19 @@ export class RequestService {
       this.httpClient.post(url, json, this.httpOptions)
     );
   }
+
+  codigoRecuperarContraseña(json: JSON, url: string): Observable<AnswerRequestI> {
+
+    return <Observable<AnswerRequestI>>(
+      this.httpClient.post(url, json, this.httpOptions)
+    )
+  }
+
+  cambiarContraseñacodigo(json: JSON, url: string): Observable<AnswerRequestI> {
+
+    return <Observable<AnswerRequestI>>(
+      this.httpClient.post(url, json, this.httpOptions)
+    )
+  }
+
 }
